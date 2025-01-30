@@ -1,7 +1,7 @@
 name: Autograding Workflow
 
 on:
-  pull_request:
+  push:
     branches:
       - main # This triggers the workflow when a PR is opened or updated
 
