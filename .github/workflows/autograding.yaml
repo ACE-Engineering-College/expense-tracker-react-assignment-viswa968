@@ -26,26 +26,4 @@ jobs:
       - name: Run tests
         run: npm test # Or specify the command to run your test cases
 
-      - name: Add PR comment on failure
-        if: failure()
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.issues.createComment({
-              issue_number: ${{ github.event.pull_request.number }},
-              owner: '${{ github.repository_owner }}',
-              repo: '${{ github.event.repository.name }}',
-              body: '❌ Tests failed! Please check the logs, fix the errors, and push again.'
-            })
-
-      - name: Add PR comment on success
-        if: success()
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.issues.createComment({
-              issue_number: ${{ github.event.pull_request.number }},
-              owner: '${{ github.repository_owner }}',
-              repo: '${{ github.event.repository.name }}',
-              body: '✅ All tests passed! Your assignment is good to go. 🎉'
-            })
+      
